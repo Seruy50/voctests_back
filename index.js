@@ -177,7 +177,7 @@ app.post('/registration/confirm', async(req, res) => {
 })
 
 app.post('/login', async(req, res) => {
-    console.log('in')
+    
     try {
         let {login, password} = req.body;
         let user = await UserModel.findOne({login : login});
@@ -271,7 +271,7 @@ app.patch('/changeCollection', async(req, res) => {
 async function start(){
     app.listen(3001, () => console.log('Server - OK'));
 
-    await mongoose.connect(`mongodb+srv://seruy50:Serjio_Valente50@cluster0.9b7eurn.mongodb.net/?retryWrites=true&w=majority`)
+    await mongoose.connect(`mongodb+srv://${process.env.username}:${process.env.password}@cluster0.9b7eurn.mongodb.net/?retryWrites=true&w=majority`)
     .then(() => console.log('Database - OK'))
     .catch((err) => console.log(err))
 }
