@@ -271,7 +271,7 @@ app.patch('/changeCollection', async(req, res) => {
 async function start(){
     app.listen(3001, () => console.log('Server - OK'));
 
-    await mongoose.connect(`mongodb+srv://seruy50@Serjio_Valente50@cluster0.9b7eurn.mongodb.net/vocabluary?retryWrites=true&w=majority`)
+    await mongoose.connect(`mongodb+srv://seruy50@Serjio_Valente50@cluster0.9b7eurn.mongodb.net/vocabluary`)
     .then(() => console.log('Database - OK'))
     .catch((err) => console.log(err))
 }
