@@ -135,6 +135,8 @@ app.post('/registration', async (req, res) => {
             password: hashPassword,
             email: email,
             fullName: fullName,
+            age: '',
+            country: '',
             isActive: false
         })
 
@@ -268,10 +270,30 @@ app.patch('/changeCollection', async(req, res) => {
     
 })
 
+app.post('/migration', async (req, res) => {
+    let user = await UserModel.findById("648afc93d1243b4db5f5e2b5");
+    console.log(user)
+    
+
+    let doc = new UserModel({
+        login: "Seruy50",
+	    password: "$2b$10$tivlRGY8jI5SB7tl53H7muXro5qeVAIZJaGkBM9J6JyBsdDEk/f9S",
+	    email: "Seruy50@ukr.net",
+	    fullName: "Serhii Universal",
+        age: 30,
+        country: 'Ukraine',
+	    isActive: true,
+    })
+
+    await doc.save()
+
+    res.send(user)
+} )
+
 async function start(){
     app.listen(3001, () => console.log('Server - OK'));
 
-    await mongoose.connect(`mongodb+srv://${process.env.username}:${process.env.password}@cluster0.9b7eurn.mongodb.net/vocabluary?retryWrites=true&w=majority`)
+    await mongoose.connect(`mongodb+srv://seruy50:Serjio_Valente50@cluster0.9b7eurn.mongodb.net/vocabluary?retryWrites=true&w=majority`)
     .then(() => console.log('Database - OK'))
     .catch((err) => console.log(err))
 }

@@ -19,6 +19,12 @@ let UserSchema = mongoose.Schema({
         type: String,
         require: true
     },
+    age: {
+        type: Number,
+    },
+    country: {
+        type: String,
+    },
     isActive: Boolean
 })
 
